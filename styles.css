@@ -281,28 +281,6 @@ body {
   height: 38px;
 }
 
-/* Preset Dropdown */
-.preset-select {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  padding: 0.45rem 2rem 0.45rem 0.875rem;
-  border-radius: var(--radius-md);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239ca3af' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 10px;
-}
-
-.preset-select:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-}
-
 /* KPI Summary Cards Grid */
 .kpi-grid {
   display: grid;
@@ -920,16 +898,9 @@ body {
   transition: width 0.3s ease;
 }
 
-/* Visual Analytics & Charts Section */
+/* Visual Analytics */
 .analytics-card {
   margin-bottom: 1.5rem;
-}
-
-.analytics-tabs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
 }
 
 .chart-container-wrapper {
@@ -938,38 +909,40 @@ body {
   height: 280px;
 }
 
-/* Smart Insights Box */
-.insight-box {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+.warning-container {
+  max-width: 1440px;
+  margin: 0 auto 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.warning-message, .remediation, .empty-state {
   border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  gap: 0.875rem;
-  align-items: flex-start;
-}
-
-.insight-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--accent-primary);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.insight-content h4 {
+  padding: 0.75rem 1rem;
   font-size: 0.875rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-  color: var(--text-primary);
 }
 
-.insight-content p {
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
+.warning-message {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--status-warn-bg);
+  border: 1px solid var(--status-warn-border);
+  color: var(--status-warn);
 }
+
+.warning-message button, .toast button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.remediation:empty { display: none; }
+.remediation { margin-top: 1rem; background: var(--status-danger-bg); border: 1px solid var(--status-danger-border); color: var(--text-primary); display: grid; gap: 0.5rem; }
+.empty-state { margin-bottom: 1rem; background: var(--bg-secondary); border: 1px dashed var(--border-color); color: var(--text-secondary); }
 
 /* Action Bar */
 .action-bar {
@@ -1008,6 +981,8 @@ body {
   animation: slideUp 0.25s ease forwards;
 }
 
+.toast button { margin-left: 0.5rem; }
+
 .toast svg {
   color: var(--status-safe);
   width: 18px;
@@ -1022,25 +997,5 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Print Styles */
-@media print {
-  body {
-    background: #ffffff !important;
-    color: #000000 !important;
-  }
-  .app-header, .btn, .action-bar, .segmented-control, .theme-toggle, .preset-select, .quick-chips {
-    display: none !important;
-  }
-  .main-layout {
-    grid-template-columns: 1fr !important;
-  }
-  .card {
-    border: 1px solid #ddd !important;
-    box-shadow: none !important;
-    background: #fff !important;
-    break-inside: avoid;
   }
 }

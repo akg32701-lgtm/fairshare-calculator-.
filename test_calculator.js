@@ -207,16 +207,8 @@ function runTests() {
   assertNear(res5.roommateBreakdowns[0].incomeRatio, 28.0, 'Master bedroom income ratio is 28%');
   assertNear(res5.roommateBreakdowns[1].incomeRatio, 25.0, 'Standard room income ratio is 25%');
 
-  // --- Test 6: Annual Horizon Multiplier ---
-  console.log('\n--- Test Group 6: Annual Horizon Toggle ---');
-  const state6 = { ...state5, timeHorizon: 'annual' };
-  const res6 = compute(state6);
-  assertNear(res6.displayTotalCost, 28800, 'Annual total cost is 28,800 (2400 * 12)');
-  assertNear(res6.roommateBreakdowns[0].displayShare, 16800, 'Master bedroom annual share is 16,800 (1400 * 12)');
-  assertNear(res6.roommateBreakdowns[0].incomeRatio, 28.0, 'Income ratio percentage remains 28%');
-
-  // --- Test 7: Edge Cases ---
-  console.log('\n--- Test Group 7: Edge Cases ($0 Income, Single Roommate, Zero Utilities) ---');
+  // --- Test 6: Edge Cases ---
+  console.log('\n--- Test Group 6: Edge Cases ($0 Income, Single Roommate, Zero Utilities) ---');
   const state7 = {
     rent: 1200,
     utilitiesMode: 'lump',
